@@ -5,10 +5,17 @@
 	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 	<title>Hello, AR Cube!</title>
 	<!-- include three.js library -->
-	 <script src='js/three.js'></script>
+	<script src='js/three.js'></script>
 	<!-- include jsartookit -->
+	<script type="importmap">
+			{
+				"imports": {
+					"three": "./js/modern/three.module.js"
+				}
+			}
+		</script>
 	<script type="module">
-		import * as THREE from '/js/modern/three.module.js';</script>
+		import * as THREE from './js/modern/three.module.js';</script>
 	<script src="jsartoolkit5/artoolkit.min.js"></script>
 	<script src="jsartoolkit5/artoolkit.api.js"></script>
 	<!-- include threex.artoolkit -->
@@ -23,18 +30,11 @@
 	<!-- 
   Example created by Lee Stemkoski: https://github.com/stemkoski
   Based on the AR.js library and examples created by Jerome Etienne: https://github.com/jeromeetienne/AR.js/
---><script type="importmap">
-			{
-				"imports": {
-					"three": "/build/three.module.js",
-					"three/addons/": "./jsm/"
-				}
-			}
-		</script>
+-->
 
 	<script type="module">
-		import * as THREE from '/js/modern/three.module.js';
-		import { PLYLoader } from '/PLYLoader.js';
+		import * as THREE from './js/modern/three.module.js';
+		import { PLYLoader } from './PLYLoader.js';
 
 		var scene, camera, renderer, clock, deltaTime, totalTime;
 
@@ -130,11 +130,11 @@
 				const material = new THREE.MeshStandardMaterial({ vertexColors: true, flatShading: true });
 
 
-			mesh1 = new THREE.Mesh(geometry, material);
-			mesh1.position.y = 0.5;
-			mesh1.scale.multiplyScalar(.1);
+				mesh1 = new THREE.Mesh(geometry, material);
+				mesh1.position.y = 0.5;
+				mesh1.scale.multiplyScalar(.1);
 
-			markerRoot1.add(mesh1);
+				markerRoot1.add(mesh1);
 
 			});
 		}
