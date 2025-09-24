@@ -50,7 +50,7 @@
 		function initialize() {
 			scene = new THREE.Scene();
 
-			let ambientLight = new THREE.AmbientLight(0xcccccc, 0.5);
+			let ambientLight = new THREE.AmbientLight(0xffffff, 2);
 			scene.add(ambientLight);
 
 			camera = new THREE.Camera();
@@ -80,10 +80,10 @@
 			});
 
 			function onResize() {
-				arToolkitSource.onResize()
-				arToolkitSource.copySizeTo(renderer.domElement)
+				arToolkitSource.onResizeElement()
+				arToolkitSource.copyElementSizeTo(renderer.domElement)
 				if (arToolkitContext.arController !== null) {
-					arToolkitSource.copySizeTo(arToolkitContext.arController.canvas)
+					arToolkitSource.copyElementSizeTo(arToolkitContext.arController.canvas)
 				}
 			}
 
@@ -123,15 +123,15 @@
 			})
 
 			const loader = new PLYLoader();
-			loader.load('models/12_0-clean.ply', function (geometry) {
+			loader.load('models/12_1-clean.ply', function (geometry) {
 
 				geometry.computeVertexNormals();
 
-				const material = new THREE.MeshStandardMaterial({ vertexColors: true, flatShading: true });
+				const material = new THREE.MeshStandardMaterial({ vertexColors: true });
 
 
 				mesh1 = new THREE.Mesh(geometry, material);
-				mesh1.position.y = 0.5;
+				// mesh1.position.y = 0.5;
 				mesh1.scale.multiplyScalar(.1);
 
 				markerRoot1.add(mesh1);
